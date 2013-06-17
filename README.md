@@ -20,7 +20,7 @@ dom4j及其依赖的架包（xml-apis commons-beanutils commons-logging 等）
         <servlet>
             <description>JZTree树形选择器</description>
             <servlet-name>jztree</servlet-name>
-            <servlet-class>com.suncreate.jztree.servlet.JztreeServlet</servlet-class>
+            <servlet-class>org.terramagnet.jztree.servlet.JztreeServlet</servlet-class>
         </servlet>
         <servlet-mapping>
             <servlet-name>jztree</servlet-name>
