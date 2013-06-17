@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    PUBLIC ID  : -//Terramagnet Software//DTD JZTree Configuration//CN
+    SYSTEM ID  : http://code.terramagnet.org/jztree/jztree-config.dtd
+-->
+
+<!ELEMENT jztree-config (web-config?,servlet-config?,tree-config?)>
+    <!ATTLIST jztree-config instance CDATA #IMPLIED>
+    <!--- Web配置.可以指定引用jquery的URL、jztree的JavaScript库目录和jztree css目录
+    -<p>所有URL要么是绝对URL要么是以"/"开头的相对于项目ContextPath的路径</p>
+    -->
+    <!ELEMENT web-config (jquery-url?,js-package?,css-package?,page*)>
+        <!ATTLIST web-config namespace CDATA #IMPLIED>
+        <!ELEMENT jquery-url (#PCDATA)>
+        <!ELEMENT js-package (#PCDATA)>
+        <!ELEMENT css-package (#PCDATA)>
+        <!ELEMENT page (#PCDATA)>
+            <!ATTLIST page class CDATA #IMPLIED>
+            <!ATTLIST page name CDATA #REQUIRED>
+    <!ELEMENT servlet-config (userObject-session-key?,namespace?,url-suffix?,operation*)>
+        <!ELEMENT userObject-session-key (#PCDATA)>
+        <!ELEMENT namespace (#PCDATA)>
+        <!ELEMENT url-suffix (#PCDATA)>
+        <!ELEMENT operation (#PCDATA)>
+            <!ATTLIST operation class CDATA #IMPLIED>
+            <!ATTLIST operation id CDATA #REQUIRED>
+    <!ELEMENT tree-config (tree*)>
+        <!ELEMENT tree ANY>
+            <!ATTLIST tree name CDATA #REQUIRED>
+            <!ATTLIST tree class CDATA #REQUIRED>

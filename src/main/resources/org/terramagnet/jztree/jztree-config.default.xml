@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE jztree-config PUBLIC "-//Terramagnet Software//DTD JZTree Configuration//CN" "http://code.terramagnet.org/jztree/jztree-config.dtd">
+<jztree-config instance="org.terramagnet.jztree.config.jaxb.JztreeConfig">
+    <!--- Web配置.用以指定引用jquery的URL、jztree的JavaScript库目录和jztree css目录
+    -<p>所有URL要么是绝对URL要么是以"/"开头的相对于项目ContextPath的路径</p>
+    -->
+    <web-config namespace="/jztree">
+        <!--- jquery的URL地址 -->
+        <jquery-url>/js/jquery.js</jquery-url>
+        <!--- jztree的JavaScript文件目录.该目录下应包含jquery-ztree-*.js文件 -->
+        <js-package>/js</js-package>
+        <!--- jztree的CSS样式目录.该目录下应包含zTreeStyle.css文件和img文件夹 -->
+        <css-package>/css</css-package>
+        <!--- jztree的错误页面.该页面用来显示Operation错误信息 -->
+        <page name="error">/error/error.jsp</page>
+        <!-- jztree的选择页面 -->
+        <page name="selection">/zTreeSelection.jsp</page>
+    </web-config>
+    <servlet-config>
+        <!--- 项目中“当前用户”对象在HttpSession中保存时所用的key值 -->
+        <userObject-session-key>userInfo</userObject-session-key>
+        <!--- jztree的Servlet上下文路径.必须以"/"开始以"/"结束，表示相对于ContextPath的URL。-->
+        <namespace>/</namespace>
+        <url-suffix>.tree</url-suffix>
+        <operation id="selection">com.suncreate.jztree.servlet.operator.Selection</operation>
+        <operation id="ajaxNode">com.suncreate.jztree.servlet.operator.AjaxNodeOperation</operation>
+        <operation id="ajaxBinding">com.suncreate.jztree.servlet.operator.AjaxBindingOperation</operation>
+    </servlet-config>
+    <tree-config>
+    </tree-config>
+</jztree-config>
