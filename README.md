@@ -40,7 +40,8 @@ dom4j及其依赖的架包（xml-apis commons-beanutils commons-logging 等）
 ### 5.  在网页中调用树
 弹出树：在页面上加载jztree/js/ztree4j.js（该文件位于jztree-1.0-web.zip中），
 使用Jztree.select({treeName:"XxxxTree",checkStyle:"checkbox"})来弹出模态树形选择器。<br />
-绑定树：加载所有必要的js（确保路径正确）
+绑定树：加载所有必要的js、css（确保路径正确）
+        <link type="text/css" rel="stylesheet" href="jztree/css/zTreeStyle.css" />
         <script type="text/javascript" src="jztree/js/jquery.js"></script>
         <script type="text/javascript" src="jztree/js/jquery.ztree.core-3.x.min.js"></script>
         <script type="text/javascript" src="jztree/js/jquery.ztree.excheck-3.x.min.js"></script>
@@ -50,4 +51,4 @@ dom4j及其依赖的架包（xml-apis commons-beanutils commons-logging 等）
             $(".ztree").jztree({treeName:"XxxxTree",anchorUrl:"xxxx/xxx?id=attr{id}"});
         });
         </script>
-### 详细参见[JavaScript文档](https://github.com/terrason/wiki/JavascriptApi)
+### 详细参见[JavaScript文档](https://github.com/terrason/jztree/wiki/JavascriptApi)
