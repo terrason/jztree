@@ -11,11 +11,11 @@ jztree 可以帮你在自己的J2EE项目中构建通用树模块。
 在项目中使用 jztree
 ------------------
 ### 1.  下载必要的架包，放入工程classpath中。
-[jztree-1.0.jar](blob/master/target/jztree-1.0.jar) 主要架包
-[XmlConfiguration-1.0.jar](../XmlConfiguration/blob/master/target/XmlConfiguration-1.0.jar)     一个xml→java的快速反射工具
+[jztree-1.0.jar](blob/master/target/jztree-1.0.jar?raw=true) 主要架包
+[XmlConfiguration-1.0.jar](../XmlConfiguration/blob/master/target/XmlConfiguration-1.0.jar?raw=true)     一个xml→java的快速反射工具
 dom4j及其依赖的架包（xml-apis commons-beanutils commons-logging 等）
 ### 2.  下载web资源部分，放入工程WEB根目录。
-[jztree-1.0-web.zip](blob/master/target/jztree-1.0-web.zip)     网页部分资源，包括js、css和jsp文件，项目中可自行修改样式。
+[jztree-1.0-web.zip](blob/master/target/jztree-1.0-web.zip?raw=true)     网页部分资源，包括js、css和jsp文件，项目中可自行修改样式。
 ### 3.  修改项目的部署描述符——web.xml，增加一个servlet，如下所示：
         <servlet>
             <description>JZTree树形选择器</description>
