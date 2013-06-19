@@ -81,7 +81,7 @@ public abstract class TypicalJztree<T> implements Jztree<T> {
      * 更改默认配置.
      *
      * <p>请参考<a
-     * href="http://172.16.5.18/common/docs/zTree/api/API_cn.html">zTree v3.1
+     * href="http://www.ztree.me/v3/api.php">zTree v3.1
      * API 文档</a>中的<cite> setting 配置详解</cite></p>
      *
      * @param setting 树的配置信息
@@ -152,31 +152,4 @@ public abstract class TypicalJztree<T> implements Jztree<T> {
      * @throws IllegalArgumentException 节点{@code node}不在这个树中（可选）
      */
     public abstract String nodeName(T node) throws IllegalArgumentException;
-
-    /**
-     * 判断节点是否为枝节点.
-     *
-     * 返回{@code null}表示不确定其是否为枝节点，由js脚本自动判断，一般有子节点的会当做枝节点，拥有枝节点的图标。
-     *
-     * <p><strong>注意：当js脚本要求某些操作时，返回{@code null}，会导致一些异常。</strong> 例如若js脚本 要求<em>只有叶节点带有超链接</em>，而业务树的此方法返回{@code null}
-     * 可能导致无法判断当前节点是否为叶节点，从而所有节点均不带有超链接。</p>
-     *
-     * @param node 节点
-     * @return {@code true}——枝节点，{@code false}——叶节点，{@code null}——交由js判断
-     * @throws IllegalArgumentException 节点{@code node}不在这个树中（可选）
-     */
-    public abstract Boolean nodeIsParent(T node) throws IllegalArgumentException;
-
-    /**
-     * 判断节点初始是否被选中. 只有JS引擎要求树带有选择框时才有效，默认配置下JS引擎中自动将此文本作为节点对象的{@code "checked"}属性。
-     *
-     * <p><strong>除非覆盖本方法，否则始终返回{@code null}！</strong></p>
-     *
-     * @param node 节点
-     * @return 需要初始被选中返回{@code true}，否则返回{@code false|null}.
-     * @throws IllegalArgumentException 节点{@code node}不在这个树中（可选）
-     */
-    public Boolean nodeChecked(T node) throws IllegalArgumentException {
-        return null;
-    }
 }
