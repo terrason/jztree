@@ -339,10 +339,18 @@ footer .owner .avatar {
   float: left;
 }
 
+footer .owner .logo {
+  float: right;
+}
+
 footer .owner img {
   display: block;
   border: 1px solid #2a2a2a;
   margin: 5px;
+}
+footer .owner .logo img{
+  display: inline;
+  margin:0px;
 }
 
 footer .owner p {
