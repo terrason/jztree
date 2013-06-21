@@ -6,7 +6,7 @@
     var OPERATION_ASYNCHRONY="/ajaxNode.tree";
     var DEFAULT_TREENAME="jztree-tree-demo";
     var DEFAULT_TARGET="subframe";
-    var DEFAULT_ANCHOR_PATTERN="both";
+    var DEFAULT_ANCHOR_APPLY="both";
     
     jQuery.fn.extend({
         "jztree":
@@ -19,7 +19,7 @@
          *  <li>option.checkStyle——<strong>选择方式</strong>.<ul style="font-size:9px;margin-top:0px;margin-bottom:4px"><li><code>checkbox</code>：多选</li><li><code>radio</code>：单选</li><li><code>none</code>：没有选择框（默认）</li></ul></li>
          *  <li>option.anchorUrl——<strong>超链接地址</strong>.默认不带有超链接</li>
          *  <li>option.anchorTarget——<strong>超链接Target属性</strong>.默认为<code>"subframe"</code></li>
-         *  <li>option.anchorPattern——<strong>赋予超链接的模式</strong>.<ul style="font-size:9px;margin-top:0px;margin-bottom:4px"><li><code>leaf</code>：只有叶节点带超链接</li><li><code>parent</code>：只有枝节点带超链接</li><li><code>both</code>：全部带超链接（默认）</li></ul></li>
+         *  <li>option.anchorApply——<strong>赋予超链接的模式</strong>.<ul style="font-size:9px;margin-top:0px;margin-bottom:4px"><li><code>leaf</code>：只有叶节点带超链接</li><li><code>parent</code>：只有枝节点带超链接</li><li><code>both</code>：全部带超链接（默认）</li></ul></li>
          *  <li>option.*diy*——<strong>任意自定义参数</strong></li>
          *  </ul>
          * @param extensions Object类型，高级扩展. 本参数的详细说明参照<cite>zTree setting配置详解</cite>。
@@ -33,7 +33,7 @@
             var postData={
                 treeName:DEFAULT_TREENAME,
                 anchorTarget:DEFAULT_TARGET,
-                anchorPattern:DEFAULT_ANCHOR_PATTERN
+                anchorApply:DEFAULT_ANCHOR_APPLY
             };
             $.extend(postData, option);
             var nodes;
@@ -80,7 +80,7 @@
             
             if(postData.anchorUrl){
                 $.each(ztree.transformToArray(ztree.getNodes()),function(i,node){
-                    if(node.url===undefined && _linkable(node, postData.anchorPattern,ztree.getNodeType)){
+                    if(node.url===undefined && _linkable(node, postData.anchorApply,ztree.getNodeType)){
                         var url=postData.anchorUrl;
                         var attrNames=_getAttributeNamesFromExpression(url);
                         $.each(attrNames,function(i,attrName){

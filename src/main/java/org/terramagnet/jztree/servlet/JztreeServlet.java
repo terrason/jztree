@@ -73,7 +73,7 @@ public class JztreeServlet extends HttpServlet {
             context.setPrincipal(client);
             String rtnVal = operation.execute(option, context, service, webConfig);
             if (rtnVal != null) {
-                if (rtnVal.matches("[\\{\\[].*[\\}\\]]")) {
+                if (rtnVal.matches("(?s:[\\{\\[].*[\\}\\]])")) {
                     sendJson(rtnVal, request, response);
                 } else if (rtnVal.startsWith("/")) {
                     sendDispath(rtnVal, request, response);
@@ -165,9 +165,9 @@ public class JztreeServlet extends HttpServlet {
 
     protected Option fillOptionFromRequest(HttpServletRequest request) {
         Option option = new Option();
-        String anchorPattern = request.getParameter("anchorPattern");
-        if (anchorPattern != null) {
-            option.setAnchorPattern(anchorPattern);
+        String anchorApply = request.getParameter("anchorApply");
+        if (anchorApply != null) {
+            option.setAnchorApply(anchorApply);
         }
         String anchorTarget = request.getParameter("anchorTarget");
         if (anchorTarget != null) {

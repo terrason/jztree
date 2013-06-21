@@ -10,7 +10,7 @@ import org.terramagnet.jztree.util.JsonUtils;
  * <tr><td>checkStyle</td><td>none</td></tr>
  * <tr><td>selectPattern</td><td>leaf</td></tr> <tr><td>anchorUrl</td><td>{@code null}</td></tr>
  * <tr><td>anchorTarget</td><td>subframe</td></tr>
- * <tr><td>anchorPattern</td><td>both</td></tr> <tr><td>modal</td><td>{@link Boolean false}</td></tr>
+ * <tr><td>anchorApply</td><td>both</td></tr> <tr><td>modal</td><td>{@link Boolean false}</td></tr>
  * <tr><td>returnType</td><td>string</td></tr>
  * <tr><td>idInput</td><td>ids</td></tr>
  * <tr><td>nameInput</td><td>names</td></tr>
@@ -27,7 +27,7 @@ public class Option {
     private String selectPattern = "leaf";
     private String anchorUrl = null;
     private String anchorTarget = "subframe";
-    private String anchorPattern = "both";
+    private String anchorApply = "both";
     private boolean modal = false;
     private String returnType = "string";
     private String idInput = "ids";
@@ -35,12 +35,12 @@ public class Option {
     private String formId = "infoForm";
     private boolean autoSubmit = false;
 
-    public String getAnchorPattern() {
-        return anchorPattern;
+    public String getAnchorApply() {
+        return anchorApply;
     }
 
-    public void setAnchorPattern(String anchorPattern) {
-        this.anchorPattern = anchorPattern;
+    public void setAnchorApply(String anchorApply) {
+        this.anchorApply = anchorApply;
     }
 
     public String getAnchorTarget() {
@@ -155,7 +155,7 @@ public class Option {
         if (anchorUrl != null) {
             jsonObject.append("anchorUrl").append(JsonUtils.COLON_SYMBOL).append(JsonUtils.QUOTE).append(anchorUrl).append(JsonUtils.QUOTE).append(JsonUtils.COMMA).append(JsonUtils.NEXT_LINE_SYMBOL);
             jsonObject.append("anchorTarget").append(JsonUtils.COLON_SYMBOL).append(JsonUtils.QUOTE).append(anchorTarget).append(JsonUtils.QUOTE).append(JsonUtils.COMMA).append(JsonUtils.NEXT_LINE_SYMBOL);
-            jsonObject.append("anchorPattern").append(JsonUtils.COLON_SYMBOL).append(JsonUtils.QUOTE).append(anchorPattern).append(JsonUtils.QUOTE).append(JsonUtils.COMMA).append(JsonUtils.NEXT_LINE_SYMBOL);
+            jsonObject.append("anchorApply").append(JsonUtils.COLON_SYMBOL).append(JsonUtils.QUOTE).append(anchorApply).append(JsonUtils.QUOTE).append(JsonUtils.COMMA).append(JsonUtils.NEXT_LINE_SYMBOL);
         }
         jsonObject.append("modal").append(JsonUtils.COLON_SYMBOL).append(modal).append(JsonUtils.COMMA).append(JsonUtils.NEXT_LINE_SYMBOL);
         jsonObject.append("returnType").append(JsonUtils.COLON_SYMBOL).append(JsonUtils.QUOTE).append(returnType).append(JsonUtils.QUOTE).append(JsonUtils.COMMA).append(JsonUtils.NEXT_LINE_SYMBOL);

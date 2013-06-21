@@ -23,9 +23,9 @@
         <!--- jztree的Servlet上下文路径.必须以"/"开始以"/"结束，表示相对于ContextPath的URL。-->
         <namespace>/</namespace>
         <url-suffix>.tree</url-suffix>
-        <operation id="selection">com.suncreate.jztree.servlet.operator.Selection</operation>
-        <operation id="ajaxNode">com.suncreate.jztree.servlet.operator.AjaxNodeOperation</operation>
-        <operation id="ajaxBinding">com.suncreate.jztree.servlet.operator.AjaxBindingOperation</operation>
+        <operation id="selection">org.terramagnet.jztree.servlet.operator.Selection</operation>
+        <operation id="ajaxNode">org.terramagnet.jztree.servlet.operator.AjaxNodeOperation</operation>
+        <operation id="ajaxBinding">org.terramagnet.jztree.servlet.operator.AjaxBindingOperation</operation>
     </servlet-config>
     <tree-config>
     </tree-config>

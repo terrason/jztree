@@ -4,7 +4,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <link href="${servletPath}${webConfig.namespace}${webConfig.cssPackage}/zTreeStyle.css" rel="stylesheet" type="text/css" />
-        <link href="${servletPath}${webConfig.namespace}${webConfig.cssPackage}/zTreeWrapper.css" rel="stylesheet" type="text/css" />
+        <link href="${servletPath}${webConfig.namespace}${webConfig.cssPackage}/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <script type="text/javascript" src="${servletPath}${webConfig.namespace}${webConfig.jqueryUrl}"></script>
         <script type="text/javascript" src="${servletPath}${webConfig.namespace}${webConfig.jsPackage}/jquery.ztree.core-3.x.min.js"></script>
         <script type="text/javascript" src="${servletPath}${webConfig.namespace}${webConfig.jsPackage}/jquery.ztree.excheck-3.x.min.js"></script>
@@ -25,13 +25,7 @@
                     $(this).removeClass("highlight");
                 });
                 $("#cancelBtn").click(function(){
-                    var minLength=$.browser.mozilla ? 1 : 0;
-                    var length=window.top.history.length;
-                    if(length && length>minLength){
-                        window.top.history.back();
-                    }else{
                         window.top.close();
-                    }
                 });
                 $("#okBtn").click(function(){
                     var selectedNodes=ztreeObj.getCheckedNodes();
@@ -92,14 +86,15 @@
             });
         </script>
     </head>
-    <body style="margin:0px">
-        <div class="ztree-wrapper">
-            <div class="ztree-wrapper-content">
-                <ul id="ztree" class="ztree"></ul>
-            </div>
-            <div class="ztree-wrapper-bottom">
-                <button id="okBtn">确定</button><button id="cancelBtn">取消</button>
-            </div>
+    <body>
+        <ul style="margin-bottom:40px;" id="ztree" class="ztree"></ul>
+        <div class="navbar navbar-fixed-bottom">
+            <div class="navbar-inner">
+                <div class="text-center">
+                    <button id="okBtn" type="button" class="btn btn-primary">确定</button>
+                    <button id="cancelBtn" type="button" class="btn">取消</button>
+                </div>
+              </div>
         </div>
     </body>
 </html>

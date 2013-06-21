@@ -9,35 +9,27 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-        <link href="${servletPath}${webConfig.namespace}${webConfig.cssPackage}/zTreeWrapper.css" rel="stylesheet" type="text/css" />
+        <link href="${servletPath}${webConfig.namespace}${webConfig.cssPackage}/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <script type="text/javascript" src="${servletPath}${webConfig.namespace}${webConfig.jqueryUrl}"></script>
         <script type="text/javascript">
             $(document).ready(function(){
-                $(".hoverable").hover(function(){
-                    $(this).addClass("highlight");
-                }, function(){
-                    $(this).removeClass("highlight");
-                });
                 $(":button.cancel").click(function(){
-                    var minLength=$.browser.mozilla ? 1 : 0;
-                    var length=window.top.history.length;
-                    if(length && length>minLength){
-                        window.top.history.back();
-                    }else{
                         window.top.close();
-                    }
                 });
             });
         </script>
         <title>Jztree操作出错</title>
     </head>
-    <body style="margin:0px;padding:0px;text-align:center;">
-        <div class="ztree-wrapper">
-            <div class="ztree-wrapper-title">Jztree操作出错</div>
-            <div class="ztree-wrapper-content">${exception}</div>
-            <div class="ztree-wrapper-bottom">
-                <button class="hoverable cancel" type="button">返回</button>
-            </div>
+    <body>
+        <div class="alert alert-error">
+            <h3>Jztree操作出错！</h3>${exception}
+        </div>
+        <div class="navbar navbar-fixed-bottom">
+            <div class="navbar-inner">
+                <div class="text-center">
+                    <button id="cancelBtn" type="button" class="btn btn-primary cancel">确定</button>
+                </div>
+              </div>
         </div>
     </body>
 </html>

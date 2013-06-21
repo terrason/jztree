@@ -1,7 +1,7 @@
 /* 
     Document   : contextMenu
-    Created on : 2012-9-4, 19:33:27
-    Author     : LEE
+    Created on : 2013-6-20, 19:33:27
+    Author     : terrason
     Description:
         jztree的右键菜单样式.
 */
@@ -17,6 +17,8 @@
     height:24px;
     line-height:24px;
     padding:0px 5px;
+    background-image: none;
+    width: auto;
 }
 .popup .menu.highlight{background:url(img/menu.highlight.jpg) repeat-x center center}
 .popup .menu.disabled{color:#888;cursor:default;}
