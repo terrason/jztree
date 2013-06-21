@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Jztree Javascript API</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link href="css/bootstrap.css" rel="stylesheet" media="screen"/>
+        <link href="css/jsapi.css" rel="stylesheet" media="screen"/>
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/bootstrap.js"></script>
+    </head>
+    <body data-spy="scroll" data-target="#sidebar" data-offset="0">
+        <div class="navbar navbar-inverse">
+            <div class="navbar-inner">
+                <a class="brand" href="#">Jztree Javascript API</a>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span3" id="sidebar">
+                    <ul id="navbar" class="nav nav-list" data-spy="affix">
+                        <li class="active"><a href="#summary">概述</a></li>
+                        <li><a href="#jztree-select">Jztree.select()</a></li>
+                        <li><a href="#dom-jztree">$dom.jztree()</a></li>
+                        <li><a href="#jztreeObject-popup">jztreeObject.popup()</a></li>
+                        <li><a href="#attr-lang">表达式</a></li>
+                    </ul>
+                </div>
+                <div class="span9">
+                    <section id="summary">
+						<h1>概述</h1>
+						<ul>
+							<li><code>Jztree.select()</code> 用来弹出树形选择器。只需导入jztree/js/ztree4j.js文件即可使用。</li>
+							<li><code>$dom.jztree()</code> 用来在页面DOM上绑定树。本方法依赖以下文件：
+<pre>&lt;link type="text/css" rel="stylesheet" href="jztree/css/zTreeStyle.css"/&gt;
+&lt;script type="text/javascript" src="jztree/js/jquery.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="jztree/js/jquery.ztree.core-3.x.min.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="jztree/js/jquery.ztree.excheck-3.x.min.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="jztree/js/jquery.jztree.js"&gt;&lt;/script&gt;</pre>该方法返回<code>jztreeObj</code>对象，下面的右键菜单就是<code>jztreeObj</code>的方法。
+							</li>
+							<li><code>jztreeObj.popup()</code> 用来在已绑定的业务树上开启右键菜单功能。需要额外导入<code>jquery.jztree-extension-contextmenu.js</code>和<code>contextMenu.css</code>。由于popup是jztreeObj的方法，因此只有在成功绑定树后才能使用弹出菜单开启功能，
+在弹出树形选择窗口页面是没有右键菜单的。</li>
+						</ul>
+					</section>
+					<hr/>
+					<section id="jztree-select">
+						<h1>Jztree.select()</h1>
+						<p class="description">调出树形选择窗口，弹出的窗口是模态的。</p>
+						<label class="label label-info">方法签名</label>
+						<ul class="funsign">
+							<li><a href="#jztree-select-treeName">Jztree.select(treeName)</a></li>
+							<li><a href="#jztree-select-option">Jztree.select(option[,extensions])</a></li>
+						</ul>
+						<article>
+							<h2>
+								<label><a name="jztree-select-treeName"></a>Jztree.select(treeName)</label>
+								<span class="return">返回：<a>object</a></span>
+							</h2>
+							<div class="content">
+								<p class="alert alert-error">尚未实现此方法，将来加入！</p>
+							</div>
+							<h2>
+								<label><a name="jztree-select-option"></a>Jztree.select(option[,extensions])</label>
+								<span class="return">返回：<a>object</a> | <a>array</a></span>
+							</h2>
+							<div class="content">
+								<div class="label label-info">参数</div>
+								<dl class="parameter dl-horizontal">
+									<dt><span class="badge badge-important" title="required">option :: object</span></dt>
+									<dd>选择器窗口的配置选项.支持的内部属性如下：
+										<dl>
+											<dt><span class="badge badge-important" title="required">treeName :: string</span></dt>
+											<dd>业务树名称. 该名称与后台<em>jztree-config.xml</em>文件中位置的业务树名称相对应。</dd>
+											<dt><span class="badge">checkStyle :: enum</span></dt>
+											<dd>选择方式. 共有三种选择方式：
+												<span class="btn-group" data-toggle="buttons-radio">
+													<button type="button" class="btn btn-primary active" title="多选（默认）">checkbox</button>
+													<button type="button" class="btn" title="单选">radio</button>
+													<button type="button" class="btn" title="无选择框">none</button>
+												</span>
+											</dd>
+											<dt><span class="badge">selectPattern :: enum</span></dt>
+											<dd>选取模式. 该参数影响最终选取结果，可用的选取模式有：
+												<span class="btn-group" data-toggle="buttons-radio">
+													<button type="button" class="btn btn-primary active" title="只能选择叶节点,忽略所有选中的枝节点（默认）">leaf</button>
+													<button type="button" class="btn" title="只能选择枝节点,忽略所有选中的叶节点">parent</button>
+													<button type="button" class="btn" title="可选任意类型的节点">both</button>
+												</span>
+											</dd>
+											<dt><span class="badge">returnType :: enum</span></dt>
+											<dd>返回值的形式. 返回的节点信息有两种表现形式：
+												<span class="btn-group" data-toggle="buttons-radio">
+													<button type="button" class="btn btn-primary active"
+title='eg. 
+{
+	ids:"1,2,3,4",
+	names:"节点1,节点2,节点3,节点4"
+}'
+													>string</button>
+													<button type="button" class="btn"
+title='eg. 
+[{
+	id:1,
+	name:"节点1",
+	extAttr:"自定义属性"
+},{
+	id:2,
+	name:"节点2",
+	description:"节点2的自定义属性"
+},
+	.
+	.
+	.
+]'
+													>array</button>
+												</span>
+											</dd>
+											<dt><span class="badge badge-success">&lt;diy&gt; :: &lt;any&gt;</span></dt>
+											<dd>任意自定义参数. 自定义参数将按照<code>@byName</code>的方式注入到业务树的实例变量中。</dd>
+										</dl>
+									</dd>
+									<dt><span class="badge">extensions :: object</span></dt>
+									<dd>与 <cite>zTree setting 配置</cite> 相同，优先级较低。详情参照：<a href="http://www.ztree.me/v3/api.php" target="_blank">zTree api</a>.</dd>
+								</dl>
+								<div class="label label-info">示例</div>
+								<div class="demo">
+									<p class="lead">1.	最基本的弹出树形选择器</p>
+<pre><code>var rtnVal=Jztree.select({treeName:"demo-tree"});
+if(rtnVal){
+	var ids=rtnVal.ids;	//以英文逗号（","）分割的选中的叶节点ID.
+	var names=rtnVal.names;	//以英文逗号（","）分割的选中的叶节点name.
+}else{
+	//用户取消了选择
+}
+</code></pre>使用默认配置弹出树形选择器，树节点带有<code>checkbox</code>选框，只有叶节点被当做有效选取对象。
+即等同于<code>Jztree.select({treeName:"demo-tree",checkStyle:"checkbox",selectPattern:"leaf",returnType:"string"})</code>.
+
+									<p class="lead">2.	将选中节点作为数组对象返回。</p>
+<pre><code>var nodes=Jztree.select({treeName:"demo-tree",<span class="important">returnType:"array"</span>});
+if(nodes){
+	for(var i=0;i&lt;nodes.length;i++){
+		var currentNode=nodes[i];
+		var id=currentNode.id;
+		var value=currentNode.description;	//节点中的任意属性.
+	}
+}</code></pre>用户取消选择时，返回值为<code>null</code>.没有任何有效节点被选中时，返回空数组<code>[]</code>.
+								</div>
+							</div>
+						</article>
+					</section>
+					<hr />
+					<section id="dom-jztree">
+						<h1>$dom.jztree()</h1>
+						<p class="description">在绑定的树上开启右键菜单.
+						本方法是<code>jquery</code>扩展，使用<code>ajax</code>从服务器端取得相应业务树的数据，屏蔽<a href="http://www.ztree.me" target="_blank">ztree</a>的大部分冗余配置。
+						适合项目中应用。</p>
+						<label class="label label-info">方法签名</label>
+						<ul class="funsign">
+							<li><a href="#dom-jztree-option">$dom.jztree(option[,extensions])</a></li>
+						</ul>
+						<article>
+							<h2>
+								<label><a name="dom-jztree-option"></a>$dom.jztree(option[,extensions])</label>
+								<span class="return">返回：<a>jztreeObject</a></span>
+							</h2>
+							<div class="content">
+								<div class="label label-info">参数</div>
+								<dl class="parameter dl-horizontal">
+									<dt><span class="badge badge-important" title="required">option :: object</span></dt>
+									<dd>绑定树的配置选项.支持的内部属性如下：
+										<dl>
+											<dt><span class="badge badge-important" title="required">treeName :: string</span></dt>
+											<dd>业务树名称. 该名称与后台<em>jztree-config.xml</em>文件中位置的业务树名称相对应。</dd>
+											<dt><span class="badge">anchorUrl :: string</span></dt>
+											<dd>超链接地址模式. 一个代表url的字符串（可以包含<a href="#attr-lang">表达式</a>），会自动将此模式授予相应类型的节点<code>url</code>属性上。
+<pre><code>url模式示例：
+user.do?method=list&deptId=attr{id}
+dept/attr{id}</code></pre>					该参数为<code>null</code>或<code>undefined</code>时，会忽略该参数，节点的超链接完全由节点<code>url</code>属性决定。
+											</dd>
+											<dt><span class="badge">anchorApply :: enum</span></dt>
+											<dd>应用超链接的节点类型. 当<code class="badge">anchorUrl</code>不为<code>null</code>时，会修改以下类型的节点<code>url</code>属性。
+												<span class="btn-group" data-toggle="buttons-radio">
+													<button type="button" class="btn" title="叶节点">leaf</button>
+													<button type="button" class="btn" title="枝节点">parent</button>
+													<button type="button" class="btn btn-primary active" title="所有节点">both</button>
+												</span>
+											</dd>
+											<dt><span class="badge">anchorTarget :: string</span></dt>
+											<dd>当应用超链接模式时指定<code>&lt;a&gt;</code>标签的<code>target</code>属性. 默认为<code>subframe</code>.</dd>
+											<dt><span class="badge badge-success">&lt;diy&gt; :: &lt;any&gt;</span></dt>
+											<dd>任意自定义参数. 自定义参数将按照<code>@byName</code>的方式注入到业务树的实例变量中。</dd>
+										</dl>
+									</dd>
+									<dt><span class="badge">extensions :: object</span></dt>
+									<dd>与 <cite>zTree setting 配置</cite> 相同，优先级较低。详情参照：<a href="http://www.ztree.me/v3/api.php" target="_blank">zTree api</a>.</dd>
+								</dl>
+								<div class="label label-info">示例</div>
+								<div class="demo">
+									<p class="lead">绑定树形</p>
+									<pre><code>$("ul.ztree").jztree({treeName:"demo-tree"});</code></pre>
+								</div>
+							</div>
+						</article>
+					</section>
+					<hr/>
+					<section id="jztreeObject-popup">
+						<h1>jztreeObject.popup()</h1>
+						<p class="description">在绑定的树上开启右键菜单.</p>
+						<label class="label label-info">方法签名</label>
+						<ul class="funsign">
+							<li><a href="#jztreeObject-popup">jztreeObject.popup()</a></li>
+							<li><a href="#jztreeObject-popup-menus">jztreeObject.popup(menus)</a></li>
+						</ul>
+						<article>
+							<h2>
+								<label><a name="jztreeObject-popup"></a>jztreeObject.popup()</label>
+								<span class="return">返回：<a>jztreeObject</a></span>
+							</h2>
+							<div class="content">
+								<div class="label label-info">描述</div>
+								<p>使用内置的默认菜单. 默认菜单有<code>新增</code>、<code>编辑</code>和<code>删除</code>。效果如图所示：<img src="img/popup-default.png" alt="popup-default" class="img-rounded"/></p>
+							</div>
+							<h2>
+								<label><a name="jztreeObject-popup-menus"></a>jztreeObject.popup(menus)</label>
+								<span class="return">返回：<a>jztreeObject</a></span>
+							</h2>
+							<div class="content">
+								<div class="label label-info">描述</div>
+								<p>使用<code>menus</code>参数表示的自定义菜单组. 默认的内置菜单依然有效，不会被直接替换掉，但被<code>menus</code><em>扩展覆盖</em>。</p>
+								<p>这里我们需要理解一下 <strong><a name="jztree-nodeType">树节点类型</a></strong> ，jztree约定了<code>root</code>,<code>empty</code>,<code>branch</code>和<code>leaf</code>共四种类型，分别表示根节点、空枝节点、非空枝节点和叶节点，优先级由高到底。 <strong>一个树节点只能属于上述一种类型！</strong></p>
+								<div class="label label-info">参数</div>
+								<dl class="parameter">
+									<dt><span class="badge">menus :: object</span></dt>
+									<dd>菜单组. 包含一组菜单的定义，菜单的标准格式为：<code>{"菜单标识":menuObject,...}</code>，其中<code>menuObject</code>的标准格式如下所示：</dd>
+								</dl>
+<pre><code>{
+	"action"	:	string|function,
+	"displayName"	:	string
+	"enable"	:	array|boolean,
+	"comfirm"	:	string,
+	"target"	:	string,
+	"clazz"		:	string
+}</code></pre>
+								<div class="label label-info">menuObject 参数详解</div>
+								<dl class="parameter dl-horizontal">
+									<dt><span class="badge">action</span></dt>
+									<dd>菜单动作. 可以接受以下类型：
+										<p><a>string</a> <code>url</code>字符串（可以包含<a href="#attr-lang">表达式</a>）. 此时菜单被点击时将跳转到<code>url</code>表示的地址。</p>
+										<p><a>function</a> 菜单被点击时执行的动作. 方法签名为：<code>void::function(ztreeObj,treeNode)</code>. </p>
+										<p>若不提供该属性，当前菜单将显示为拟似禁用的状态。（根据此特性可以创建分隔线！）</p>
+									</dd>
+									<dt><span class="badge">displayName</span></dt>
+									<dd>菜单的显示名称. 若不提供该属性，使用当前菜单的标识作为显示名称。</dd>
+									<dt><span class="badge">enable</span></dt>
+									<dd><p>菜单是否显示. 该属性用来支持“用户右击不同<a href="#jztree-nodeType" title="root|empty|branch|leaf">类型</a>的树节点时弹出不同的右键菜单”这一特性。该属性值为数组，当前节点类型被包含于该属性所表示的数组内时，弹出的右键菜单框中才会显示当前菜单。</p>
+										<p>例如：<br/>
+											<code>["branch","empty"]</code>表示除了根节点之外的所有父节点都会显示本菜单。<br />
+											<code>["empty"]</code>表示当前菜单只有在空的父节点上右击时才会显示。</br>
+											<code>["leaf"]</code>表示当前菜单只有在叶节点上右击时才会显示。</br>
+										</p>
+										<p>该属性也可接受<a>boolean</a>值，<code>true</code>（或不提供该属性）表示当前菜单始终被显示出来；<code>false</code>表示当前菜单被禁用，即永远也不会显示。</p>
+									</dd>
+									<dt><span class="badge">comfirm</span></dt>
+									<dd>确认消息. 表示在执行动作（<span class="badge">action</span>）之前需要弹出窗口确认的消息（可带表达式）。不提供该属性则不会进行弹出确认框。</dd>
+									<dt><span class="badge">target</span></dt>
+									<dd>只有<span class="badge">action</span>参数为字符串且<span class="badge">comfirm</span>参数不存在时有效，作用类似<code>&lt;a&gt;</code>标签的<code>target</code>属性。</dd>
+									<dt><span class="badge">clazz</span></dt>
+									<dd>菜单的附加样式类。</dd>
+								</dl>
+								<div class="label label-info">示例</div>
+								<div class="demo">
+									<p class="lead">这是源代码中的内置菜单</p>
+<pre><code>var _menus = {
+        "新增": {
+            enable: ["root", "branch", "empty"],
+            action: "add?parentId=attr{id}",
+            clazz: "icon-add"
+        },
+        "编辑": {
+            enable: true,
+            action: "edit?id=attr{id}",
+            clazz: "icon-edit"
+        },
+        "删除": {
+            enable: ["empty", "leaf"],
+            action: "remove?id=attr{id}",
+            confirm: "确定要删除 attr{name} 吗？",
+            clazz: "icon-remove"
+        },
+        "属性": {
+            enable: false,
+            action: function(ztreeObj, treeNode) {
+                var msg = "";
+                $.each(treeNode, function(name, value) {
+                    msg += name + ":" + value + "\n";
+                });
+                window.alert(msg);
+            },
+            confirm: "正在进行 attr{name} 的属性查看操作！\n此处显示的属性信息仅为调试所用，确定查看吗？"
+        }
+    };</code></pre>	
+								</div>
+								<div class="demo">
+									<p class="lead"><em>扩展覆盖</em>内置菜单</p>
+<pre><code>jztreeObject.popup({
+	"新增":{
+		displayName:"新建子部门",
+		action:"dept?method=add&parentId=attr{id}"
+	},
+	"添加用户":{
+		enable:["branch","empty"],
+		action:"user?method=add&deptId=attr{id}",
+		clazz:"icon-add"
+	},
+	"编辑":{
+		displayName:"重命名"
+	},
+	"————":null,    //这是菜单组分割线
+	"查看节点ID":function(ztreeObj,treeNode){
+		window.alert(treeNode.id);
+	},
+	"节点类型":function(ztreeObj,treeNode){
+		window.alert(ztreeObj.getNodeType(treeNode));
+	}
+});</code></pre>
+								</div>
+							</div>
+						</article>
+					</section>
+					<hr />
+					<section id="attr-lang">
+						<h1>表达式语言</h1>
+<pre><code>attr{attributeName}</code></pre>
+						<p class="description">其中<code>attributeName</code>是指当前节点的属性名。如以下示例：</p>
+<pre><code>var option={
+	treeName:"dept",
+	anchorUrl:"../../console/user.action?deptId=<span class="important">attr{id}</span>"，
+	anchorTarget:"userframe"
+};
+$(".ztree").jztree(option);</code></pre>
+<p class="description">假设树中有一个节点，其<code>id</code>属性为<code>1034</code>，则该节点<code>&lt;a&gt;</code>标签的<code>href</code>属性为<code>../../console/user.action?deptId=1034</code></p>
+					</section>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
