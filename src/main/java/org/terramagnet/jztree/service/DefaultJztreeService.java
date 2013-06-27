@@ -21,7 +21,7 @@ import org.apache.commons.logging.LogFactory;
  * <p>当将节点转换为JSON字符串时，会为每个节点设置属性，属性名由{@link Jztree 业务树}的{@code nodeXxxxXxxx(Object node)}方法定义。</p>
  * <p>例如若一个业务树中含有以下方法：</p>
  * <pre>
- *  public class XxxxJztree<T> implements Jztree<T> {
+ *  public class XxxxJztree&lt;T&gt; implements Jztree&lt;T&gt {
  *      ....
  *      public String nodeId(T node) {...}
  *      public String nodeParentId(T node){...}
