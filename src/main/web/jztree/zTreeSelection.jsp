@@ -12,76 +12,74 @@
         <title>zTree 选择器</title>
         <script type="text/javascript">
             var ztreeObj;
-            
-            $(document).ready(function(){
-                var arg=window.dialogArguments || {};
-                var _option={checkStyle:"checkbox",selectPattern:"leaf",returnType:"string"};
-                $.extend(true,_option,arg.option || {});
-                ztreeObj=$("#ztree").jztree(_option,arg.extensions);
-                
-                $("button").hover(function(){
+
+            $(document).ready(function() {
+                var arg = window.dialogArguments || {};
+                var _option = {checkStyle: "checkbox", selectPattern: "leaf", returnType: "string"};
+                $.extend(true, _option, arg.option || {});
+                ztreeObj = $("#ztree").jztree(_option, arg.extensions);
+
+                $("button").hover(function() {
                     $(this).addClass("highlight");
-                }, function(){
+                }, function() {
                     $(this).removeClass("highlight");
                 });
-                $("#cancelBtn").click(function(){
-                        window.top.close();
+                $("#cancelBtn").click(function() {
+                    window.top.close();
                 });
-                $("#okBtn").click(function(){
-                    var selectedNodes=ztreeObj.getCheckedNodes();
-                    var ids="";
-                    var names="";
-                    var nodes=[];
-                    $.each(selectedNodes,function(i,node){
-                        var selectable=false;
-                        if(_option.selectPattern==="both"){
-                            selectable= true;
-                        }else if(_option.selectPattern==="parent"){
-                            selectable=!(ztreeObj.getNodeType(node) === "leaf");
-                        }else{
-                            selectable=(ztreeObj.getNodeType(node) === "leaf");
+                $("#okBtn").click(function() {
+                    var selectedNodes = ztreeObj.getCheckedNodes();
+                    var ids = "";
+                    var names = "";
+                    var nodes = [];
+                    $.each(selectedNodes, function(i, node) {
+                        var selectable = false;
+                        if (_option.selectPattern === "both") {
+                            selectable = true;
+                        } else if (_option.selectPattern === "parent") {
+                            selectable = !(ztreeObj.getNodeType(node) === "leaf");
+                        } else {
+                            selectable = (ztreeObj.getNodeType(node) === "leaf");
                         }
-                        if(selectable){
-                            ids+=(_getRealId(node.id)+",");
-                            names+=(node.name+",");
-                            node.parentNode=node.getParentNode();
+                        if (selectable) {
+                            ids += (_getRealId(node.id) + ",");
+                            names += (node.name + ",");
+                            node.parentNode = node.getParentNode();
                             nodes.push(node);
                         }
                     });
-                    if(nodes.length===0){
-                        if(!window.confirm("您没有选中任何有效节点！")){
-                            return ;
+                    if (nodes.length === 0) {
+                        if (!window.confirm("您没有选中任何有效节点！")) {
+                            return;
                         }
                     }
-                    ids=ids.substring(0,ids.length-1);
-                    names=names.substring(0,names.length-1);
-                    
-                    if(_option.returnType==="array"){
-                        window.returnValue=nodes;
-                    }else{
-                        var rtn={
-                            ids:ids,
-                            names:names
+                    ids = ids.substring(0, ids.length - 1);
+                    names = names.substring(0, names.length - 1);
+
+                    if (_option.returnType === "array") {
+                        window.returnValue = nodes;
+                    } else {
+                        var rtn = {
+                            ids: ids,
+                            names: names
                         };
-                        window.returnValue=rtn;
+                        window.returnValue = rtn;
                     }
                     window.close();
                 });
-                
-                function _getRealId(src,splitChar){
-                    if(!splitChar){
-                        splitChar="_";
+
+                function _getRealId(src, splitChar) {
+                    if (!splitChar) {
+                        splitChar = "_";
                     }
-                    if(src){
-                        var j=src.lastIndexOf(splitChar);
-                        if(j<0){
-                            return src;
-                        }else{
-                            return src.substring(j+1);
-                        }
-                    }else{
+                    if (!src) {
+                        return null;
+                    }
+                    var j = src.lastIndexOf(splitChar);
+                    if (j < 0) {
                         return src;
                     }
+                    return src.substring(j + 1);
                 }
             });
         </script>
@@ -94,7 +92,7 @@
                     <button id="okBtn" type="button" class="btn btn-primary">确定</button>
                     <button id="cancelBtn" type="button" class="btn">取消</button>
                 </div>
-              </div>
+            </div>
         </div>
     </body>
 </html>

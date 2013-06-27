@@ -35,15 +35,16 @@ public interface Jztree<T> {
     /**
      * 返回树的配置信息.
      *
-     * 请参考<a href="http://www.ztree.me/v3/api.php">zTree
-     * v3.1 API 文档</a>中的<cite> setting 配置详解</cite>
+     * 请参考<a href="http://www.ztree.me/v3/api.php">zTree v3.1 API 文档</a>中的<cite>
+     * setting 配置详解</cite>
      *
      * @return 树的配置信息.
      */
     public Object getSetting();
 
     /**
-     * 设置当前上下文参数. <p>所有Http请求中的参数都在上下文参数中，但是需要特别注意：<strong>所有http请求的参数以{@code String}为键，以{@code String[]}数组为值！</strong></p>
+     * 设置当前上下文参数.
+     * <p>所有Http请求中的参数都在上下文参数中，但是需要特别注意：<strong>所有http请求的参数以{@code String}为键，以{@code String[]}数组为值！</strong></p>
      *
      * @param context 上下文参数.（所有Http请求中的参数都能在这里找到）
      */
@@ -58,8 +59,10 @@ public interface Jztree<T> {
     public Collection<T> listNodes() throws UnsupportedOperationException;
 
     /**
-     * 列出少量供以展示的节点. <p>异步加载的树需要实现此方法，这里返回树页面要加载的第一批节点。抛出{@link TreeSyncOperationUnsupportException}则表示不支持<em>异步操作</em>。</p>
+     * 列出少量供以展示的节点.
+     * <p>异步加载的树需要实现此方法，这里返回树页面要加载的第一批节点。抛出{@link TreeSyncOperationUnsupportException}则表示不支持<em>异步操作</em>。</p>
      *
+     * @deprecated JS引擎对异步加载时的节点处理尚不成熟
      * @return 首批节点数据
      * @exception TreeSyncOperationUnsupportException 表示不支持异步操作时抛出此异常
      * @see #listChildNodes(java.lang.String)
@@ -67,8 +70,10 @@ public interface Jztree<T> {
     public Collection<T> listPreviewNodes() throws TreeSyncOperationUnsupportException;
 
     /**
-     * 根据父节点列出其子节点. <p>异步加载的树需要实现此方法，若不想提供异步获取节点数据功能，可以抛出{@link TreeSyncOperationUnsupportException}以表示不支持<em>异步操作</em>。</p>
+     * 根据父节点列出其子节点.
+     * <p>异步加载的树需要实现此方法，若不想提供异步获取节点数据功能，可以抛出{@link TreeSyncOperationUnsupportException}以表示不支持<em>异步操作</em>。</p>
      *
+     * @deprecated JS引擎对异步加载时的节点处理尚不成熟
      * @param parentNodeId 父节点id号.
      * @exception TreeSyncOperationUnsupportException 表示不支持异步操作时抛出此异常
      * @return 子节点列表.<strong>（没有节点请返回空列表）</strong>

@@ -10,8 +10,22 @@ import org.terramagnet.jztree.servlet.Context;
 import java.util.Collection;
 
 /**
- * 业务树的抽象超类，定义了一些典型节点属性. 配置信息使用{@link TreeSetting 默认配置}。
- *
+ * 业务树的抽象超类，定义了一些典型节点属性. 使用{@link TreeSetting 默认配置}。
+ * 
+ * <p>在扩展此类时可以添加任意多个形如<code>nodeXxxx(T node)</code>的方法，在最终转化成JSON数据时，会将此类方法作为自定义属性添加到节点元素中。</p>
+ * <p>例如若一个业务树中定义如下：</p>
+ * <pre>
+ *  public class XxxxJztree&lt;T&gt; extends TypicalJztree&lt;T&gt {
+ *      ....
+ *      public String nodeId(T node) {...}
+ *      public String nodeParentId(T node){...}
+ *      public String nodeName(T node){...}
+ *      public Boolean nodeIsParent(T node){...}
+ *      public Boolean nodeChecked(T node){...}
+ *  }
+ * </pre>那么在生成节点的JSON字符串时，每个节点都拥有{@code id parentId name isParent checked}这五个属性（如果方法不返回{@code null}的话）。
+ * 
+ * <p>在扩展此类时，可以有自定义实例变量，它们会尽可能的注入JS引擎传入的同名参数（必须要有setter方法且是基本类型才能成功）。</p>
  * @author terrason
  */
 public abstract class TypicalJztree<T> implements Jztree<T> {
