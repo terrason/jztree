@@ -20,6 +20,7 @@
          *  <li>option.anchorUrl——<strong>超链接地址</strong>.默认不带有超链接</li>
          *  <li>option.anchorTarget——<strong>超链接Target属性</strong>.默认为<code>"subframe"</code></li>
          *  <li>option.anchorApply——<strong>赋予超链接的模式</strong>.<ul style="font-size:9px;margin-top:0px;margin-bottom:4px"><li><code>leaf</code>：只有叶节点带超链接</li><li><code>parent</code>：只有枝节点带超链接</li><li><code>both</code>：全部带超链接（默认）</li></ul></li>
+         *  <li>option.click——<strong>节点被点击的事件回调函数</strong></li>
          *  <li>option.*diy*——<strong>任意自定义参数</strong></li>
          *  </ul>
          * @param extensions Object类型，高级扩展. 本参数的详细说明参照<cite>zTree setting配置详解</cite>。
@@ -124,6 +125,9 @@
         }
         if(option.selectPattern){
             setting.selectPattern=option.selectPattern;
+        }
+        if(option.click){
+            setting.callback.onClick=option.click;
         }
     }
     function _linkable(node,pattern,nodeType){
