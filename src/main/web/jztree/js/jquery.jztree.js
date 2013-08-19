@@ -26,7 +26,7 @@
          * @param extensions Object类型，高级扩展. 本参数的详细说明参照<cite>zTree setting配置详解</cite>。
          *@return <strong>zTreeObj对象</strong>（服务器处理出错时返回<code>null</code>）.
          **/
-        function jztree(option,extensions){
+        function (option,extensions){
             var $this=$(this);
             if(!$this.hasClass("ztree")){
                 $this.addClass("ztree");
@@ -79,23 +79,37 @@
                 }
             };
             
-            if(postData.anchorUrl){
-                $.each(ztree.transformToArray(ztree.getNodes()),function(i,node){
-                    if(node.url===undefined && _linkable(node, postData.anchorApply,ztree.getNodeType)){
-                        var url=postData.anchorUrl;
-                        var attrNames=_getAttributeNamesFromExpression(url);
-                        $.each(attrNames,function(i,attrName){
-                            var regexp=new RegExp("attr\\{"+attrName+"\\}", "g");
-                            var attrValue=node[attrName];
-                            url=url.replace(regexp, attrName==="id"?_getRealId(attrValue):attrValue, "g");
+            if (postData.anchorUrl) {
+                if (postData.anchorTarget.jquery) {//no test yet !!
+                    var $dom = postData.anchorTarget;
+                    ztree.setting.callback.onClick = function(event, treeId, treeNode, clickFlag) {
+                        var url = postData.anchorUrl;
+                        var attrNames = _getAttributeNamesFromExpression(url);
+                        $.each(attrNames, function(i, attrName) {
+                            var regexp = new RegExp("attr\\{" + attrName + "\\}", "g");
+                            var attrValue = treeNode[attrName];
+                            url = url.replace(regexp, attrName === "id" ? _getRealId(attrValue) : attrValue, "g");
                         });
-                        node.url=url;
-                        if(node.target===undefined){
-                            node.target=postData.anchorTarget;
+                        $dom.load(url);
+                    };
+                } else {
+                    $.each(ztree.transformToArray(ztree.getNodes()), function(i, node) {
+                        if (node.url === undefined && _linkable(node, postData.anchorApply, ztree.getNodeType)) {
+                            var url = postData.anchorUrl;
+                            var attrNames = _getAttributeNamesFromExpression(url);
+                            $.each(attrNames, function(i, attrName) {
+                                var regexp = new RegExp("attr\\{" + attrName + "\\}", "g");
+                                var attrValue = node[attrName];
+                                url = url.replace(regexp, attrName === "id" ? _getRealId(attrValue) : attrValue, "g");
+                            });
+                            node.url = url;
+                            if (node.target === undefined) {
+                                node.target = postData.anchorTarget;
+                            }
+                            ztree.updateNode(node);
                         }
-                        ztree.updateNode(node);
-                    }
-                });
+                    });
+                }
             }
             
             var rootNodes=ztree.getNodes();
