@@ -188,6 +188,14 @@ dept/attr{id}</code></pre>					该参数为<code>null</code>或<code>undefined</
 											</dd>
 											<dt><span class="badge">anchorTarget :: string</span></dt>
 											<dd>当应用超链接模式时指定<code>&lt;a&gt;</code>标签的<code>target</code>属性. 默认为<code>subframe</code>.</dd>
+											<dt><span class="badge">checkStyle :: enum</span></dt>
+											<dd>选取方式.
+												<span class="btn-group" data-toggle="buttons-radio">
+													<button type="button" class="btn btn-primary active" title="不可选取，树节点上没有任何checkbox或radio（默认）">none</button>
+													<button type="button" class="btn" title="单选">radio</button>
+													<button type="button" class="btn" title="树节点可以多选">checkbox</button>
+												</span>
+											</dd>
 											<dt><span class="badge badge-success">&lt;diy&gt; :: &lt;any&gt;</span></dt>
 											<dd>任意自定义参数. 自定义参数将按照<code>@byName</code>的方式注入到业务树的实例变量中。</dd>
 										</dl>
